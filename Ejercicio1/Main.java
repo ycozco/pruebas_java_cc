@@ -1,3 +1,4 @@
+package Ejercicio1;
 public class Main {
     public static void main(String[] args) {
         Rectangulo rectangulo1 = new Rectangulo(5,6);

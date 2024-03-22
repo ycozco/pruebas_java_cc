@@ -8,7 +8,8 @@ public class Main {
 
         Reserva reserva1 = new Reserva("Mario", habitacionDeluxe, 3);
         reserva1.mostrarDetalles();
-
+        reserva1.agregarServicioAdicional(ServicioAdicional.SPA, 50);
+        reserva1.mostrarDetalles();
     }
 }
 

@@ -1,3 +1,4 @@
+package Ejercicio1;
 public class Rectangulo extends Figura {
     private double base;
     private double altura;
