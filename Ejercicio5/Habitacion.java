@@ -1,10 +1,10 @@
 package Ejercicio5;
 
-public class Habitacion {
+public abstract class Habitacion {
     protected int numeroHabitacion;
     protected double precioPorNoche;
 
-    public Habitacion (int numeroHabitacion, double precioPorNoche){
+    public Habitacion(int numeroHabitacion, double precioPorNoche) {
         this.numeroHabitacion = numeroHabitacion;
         this.precioPorNoche = precioPorNoche;
     }
@@ -17,9 +17,9 @@ public class Habitacion {
         return numeroHabitacion;
     }
 
-    public abstract calcularCosto(int diasReserva);
+    public abstract double calcularCosto(int diasReserva);
 
     public void obtenerInformacion() {
-        System.out.println("Numero de habitacion: " + numeroHabitacion + "\t Precio por noche: " + precioPorNoche);
+        System.out.println("Numero de habitacion: " + numeroHabitacion + ", Precio por noche: " + precioPorNoche);
     }
 }
