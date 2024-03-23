@@ -14,6 +14,13 @@ public class Reserva {
         this.diasReserva = diasReserva;
     }
 
+    public String getCliente() {
+        return cliente;
+    }
+    public Habitacion getHabitacion() {
+        return habitacion;
+    }
+
     public void agregarServicioAdicional(ServicioAdicional servicio, double costo) {
         serviciosAdicionales.put(servicio, costo);
     }
@@ -58,6 +65,6 @@ for (Map.Entry<String, Integer> entrada : mapa.entrySet()) {
             
             
         }
-        System.out.println("Costo Total: $" + calcularCostoTotal());
+        System.out.println("Costo Total: $" + calcularCostoTotal() + "\n");
     }
 }

@@ -3,10 +3,12 @@ package Ejercicio5;
 public abstract class Habitacion {
     protected int numeroHabitacion;
     protected double precioPorNoche;
+    protected boolean disponible;
 
-    public Habitacion(int numeroHabitacion, double precioPorNoche) {
+    public Habitacion(int numeroHabitacion, double precioPorNoche, boolean disponible) {
         this.numeroHabitacion = numeroHabitacion;
         this.precioPorNoche = precioPorNoche;
+        this.disponible = disponible;
     }
 
     public double getPrecioPorNoche() {
@@ -17,9 +19,18 @@ public abstract class Habitacion {
         return numeroHabitacion;
     }
 
+    public boolean getDisponible() {
+        return disponible;
+    }
+
+    public void setDisponible(boolean disponible){
+        this.disponible = disponible;
+    }
+
     public abstract double calcularCosto(int diasReserva);
 
     public void obtenerInformacion() {
-        System.out.println("Numero de habitacion: " + numeroHabitacion + ", Precio por noche: " + precioPorNoche);
+            System.out.println("Numero de habitacion: " + numeroHabitacion + " \nPrecio por noche: " + precioPorNoche + "\nDisponible: " + (disponible?"Sí":"No"));
     }
+    
 }

@@ -2,12 +2,20 @@ package Ejercicio5;
 
 public class HabitacionEstandar extends Habitacion {
     
-    public HabitacionEstandar(int numeroHabitacion, double precioPorNoche) {
-        super(numeroHabitacion, precioPorNoche);
+    public HabitacionEstandar(int numeroHabitacion, double precioPorNoche, boolean disponible) {
+        super(numeroHabitacion, precioPorNoche, disponible);
     }
 
     @Override
     public double calcularCosto(int diasReserva) {
         return diasReserva * getPrecioPorNoche();
     }
+
+    @Override
+    public void obtenerInformacion() {
+        super.obtenerInformacion();
+        System.out.println("Tipo: Estandar");
+    }
+
+
 }
