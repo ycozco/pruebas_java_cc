@@ -6,10 +6,14 @@ public class HabitacionSuite extends Habitacion {
         super(numeroHabitacion, precioPorNoche, disponible);
     }
 
+    public String getTipo() {
+        return "Suite";
+    }
+
     @Override
     public double calcularCosto(int diasReserva) {
-        // suite tiene un incremento del 15% en el precio por noche
-        return diasReserva * getPrecioPorNoche()*1.15; // 
+        // suite tiene un descuento del 20% en el precio por noche
+        return diasReserva * getPrecioPorNoche()*0.80; // 
     }
 
     @Override

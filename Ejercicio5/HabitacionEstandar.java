@@ -6,6 +6,10 @@ public class HabitacionEstandar extends Habitacion {
         super(numeroHabitacion, precioPorNoche, disponible);
     }
 
+    public String getTipo() {
+        return "Estandar";
+    }
+
     @Override
     public double calcularCosto(int diasReserva) {
         return diasReserva * getPrecioPorNoche();
