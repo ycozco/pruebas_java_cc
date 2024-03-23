@@ -46,13 +46,16 @@ public class Main {
                         System.out.println("");
                     }
                    
-                    System.out.println("Ingresar detalles de la reserva (Ejm: Nombre, Tipo de habitacion, Duración de la estadía): ");
+                    System.out.println("Ingresar datos (Ejm: Nombre, Tipo de habitacion (Primera letra en mayuscula), Duración de la estadia (1-10) en días): ");
                     String respuesta = sc.nextLine();
                     String[] pRespuesta = respuesta.split(", "); //Está dividiendo la cadena usando ", " como delimitador
                     String nombre = pRespuesta[0];
-                    String tipo = "Habitacion" + pRespuesta[1];
-                    System.out.println("Habitacion(es) " + pRespuesta[1] + " disponibles:");
                     int duracion = Integer.parseInt(pRespuesta[2]);
+
+                    if((pRespuesta[1].equals("Estandar") || pRespuesta[1].equals("Deluxe") || pRespuesta[1].equals("Suite")) && (duracion>0 && duracion<11)){
+                    String tipo = "Habitacion" + pRespuesta[1];
+                    
+                    System.out.println("Habitacion(es) " + pRespuesta[1] + " disponibles:");
 
                     ArrayList <Habitacion> escogerH = new ArrayList <>();
                     for (Habitacion habitacion : habitaciones) {
@@ -73,10 +76,14 @@ public class Main {
                         }
                     }
                     iReserva++;
-                    System.out.print("Operacion Finalizada. Desea volver al menu principal? (0 para salir): ");
+                    System.out.print("Operacion Finalizada. Desea volver al menu principal? (Cualquier numero para continuar / 0 para salir): ");
                     opcion = sc.nextInt();
-
                     break;
+                    } else {
+                        System.out.println("Datos incorrectos ingresados. Intente de nuevo.");
+                        break;
+                    }
+
                 case 2:
                     System.out.println("Listando todas las reservas: \n");
                     for (Map.Entry<Integer, Reserva> entry : listaReservas.entrySet()) {
@@ -121,8 +128,15 @@ public class Main {
                     for (Map.Entry<Integer, Reserva> entry : listaReservas.entrySet()) {
                         int numeroReserva = entry.getKey();
                         Reserva reserva = entry.getValue();
-                        reserva.mostrarDetalles();
+                        System.out.println("Numero de reserva: " + numeroReserva + "\t Cliente: " + reserva.getCliente() + "\t N° habitacion: " + reserva.getHabitacion().getNumeroHabitacion() + "\t Precio actual: " + reserva.calcularCostoTotal() + "\n");
                     }
+                    System.out.print("Ingrese num de reserva para MOSTRAR DATOS COMPLETOS: ");
+                    int num1 = sc.nextInt();
+                    sc.nextLine();
+                    System.out.println("");
+                    Reserva reservaDetalle = listaReservas.get(num1);
+                    reservaDetalle.mostrarDetalles();
+
                     System.out.print("Operacion Finalizada. Desea volver al menu principal? (0 para salir): ");
                     opcion = sc.nextInt();
                     break;

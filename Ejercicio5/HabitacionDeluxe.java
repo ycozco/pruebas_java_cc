@@ -5,6 +5,10 @@ public class HabitacionDeluxe extends Habitacion {
         super(numeroHabitacion, precioPorNoche, disponible);
     }
 
+    public String getTipo() {
+        return "Deluxe";
+    }
+
     @Override
     public double calcularCosto(int diasReserva) {
         // Supongamos que las habitaciones Deluxe tienen un 10% de descuento
