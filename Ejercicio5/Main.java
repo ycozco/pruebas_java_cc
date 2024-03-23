@@ -64,7 +64,6 @@ public class Main {
                     }
                     System.out.println("Ingrese número de la habitación a reservar: ");
                     int numReserva = sc.nextInt();
-                    String nombreReserva = "reserva" + nombre;
                     for(Habitacion opciones : escogerH){
                         if(numReserva==opciones.getNumeroHabitacion()){
                             Reserva reserva = new Reserva(nombre, opciones, duracion);
@@ -89,34 +88,34 @@ public class Main {
                     System.out.print("Ingrese num de reserva para agregar servicios adicionales: ");
                     int num = sc.nextInt();
                     sc.nextLine();
-                    for(Map.Entry<Integer, Reserva> entry : listaReservas.entrySet()) {
-                        int numeroReserva = entry.getKey();
-                        Reserva reserva = entry.getValue();
-                        if(num==numeroReserva){
-                            System.out.print(reserva.getCliente() + ", que servicio adicional desea agregar? (SPA/DESAYUNO/TRANSPORTE): ");
-                            String servicio = sc.nextLine().toLowerCase();
-                            switch (servicio) {
-                                case "spa":
-                                    reserva.agregarServicioAdicional(ServicioAdicional.SPA, 50);
-                                    System.out.println("Agregó SPA +$50 \n");
-                                    break;
-                                case "desayuno":
-                                    reserva.agregarServicioAdicional(ServicioAdicional.DESAYUNO, 30);
-                                    System.out.println("Agregó DESAYUNO +$30 \n");
-                                    break;
-                                case "transporte":
-                                    reserva.agregarServicioAdicional(ServicioAdicional.TRANSPORTE, 100);
-                                    System.out.println("Agregó TRANSPORTE +$100 \n");
-                                    break;
-                                default:
-                                    break;
-                            }
+                    Reserva reservaS = listaReservas.get(num);
+                    if (reservaS != null) {
+                        System.out.print(reservaS.getCliente() + ", ¿qué servicio adicional desea agregar? (SPA/DESAYUNO/TRANSPORTE): ");
+                        String servicio = sc.nextLine().toLowerCase();
+                        switch (servicio) {
+                            case "spa":
+                                reservaS.agregarServicioAdicional(ServicioAdicional.SPA, 50);
+                                System.out.println("Agregó SPA +$50 \n");
+                                break;
+                            case "desayuno":
+                                reservaS.agregarServicioAdicional(ServicioAdicional.DESAYUNO, 30);
+                                System.out.println("Agregó DESAYUNO +$30 \n");
+                                break;
+                            case "transporte":
+                                reservaS.agregarServicioAdicional(ServicioAdicional.TRANSPORTE, 100);
+                                System.out.println("Agregó TRANSPORTE +$100 \n");
+                                break;
+                            default:
+                                break;
                         }
+                    } else {
+                        System.out.println("No se encontró ninguna reserva con el número especificado.");
                     }
-
                     System.out.print("Operacion Finalizada. Desea volver al menu principal? (0 para salir): ");
                     opcion = sc.nextInt();
                     break;
+
+
                     case 3: 
                     System.out.println("Listando todas las reservas: \n");
                     for (Map.Entry<Integer, Reserva> entry : listaReservas.entrySet()) {
