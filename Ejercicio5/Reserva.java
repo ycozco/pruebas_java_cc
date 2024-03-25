@@ -51,7 +51,7 @@ for (Map.Entry<String, Integer> entrada : mapa.entrySet()) {
 
 
          */
-        System.out.println("Cliente: " + cliente + "\nNumero de habitacion: " + habitacion.getNumeroHabitacion() + "\nTipo: " + habitacion.getTipo()+ "\nPrecio por noche: "+ habitacion.getPrecioPorNoche() + "\nDías de reserva: " + diasReserva +  "\nPrecio de reserva original: " + habitacion.getPrecioPorNoche()*diasReserva  +  "\nPrecio de reserva con descuento: " + habitacion.calcularCosto(diasReserva));
+        System.out.println("Cliente: " + cliente + "\nNumero de habitacion: " + habitacion.getNumeroHabitacion() + "\nTipo: " + habitacion.getTipo()+ "\nPrecio por noche: $"+ habitacion.getPrecioPorNoche() + "\nDías de reserva: " + diasReserva +  "\nPrecio de reserva original: $" + habitacion.getPrecioPorNoche()*diasReserva  +  "\nPrecio de reserva con descuento: $" + habitacion.calcularCosto(diasReserva));
         if (!serviciosAdicionales.isEmpty()) {
             System.out.println("Servicios adicionales:");
             //serviciosAdicionales.forEach((servicio, costo) -> System.out.println(servicio + ": $" + costo));

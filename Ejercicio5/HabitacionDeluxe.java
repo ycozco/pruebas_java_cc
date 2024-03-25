@@ -18,6 +18,6 @@ public class HabitacionDeluxe extends Habitacion {
     @Override
     public void obtenerInformacion() {
         super.obtenerInformacion();
-        System.out.println("Tipo: Deluxe");
+        System.out.println("Tipo: " + this.getTipo());
     }
 }
