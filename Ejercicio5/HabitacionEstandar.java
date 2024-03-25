@@ -18,7 +18,7 @@ public class HabitacionEstandar extends Habitacion {
     @Override
     public void obtenerInformacion() {
         super.obtenerInformacion();
-        System.out.println("Tipo: Estandar");
+        System.out.println("Tipo: " + this.getTipo());
     }
 
 

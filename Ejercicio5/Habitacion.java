@@ -32,7 +32,7 @@ public abstract class Habitacion {
     public abstract String getTipo() ;
 
     public void obtenerInformacion() {
-            System.out.println("Numero de habitacion: " + numeroHabitacion + " \nPrecio por noche: " + precioPorNoche + "\nDisponible: " + (disponible?"Sí":"No"));
+            System.out.println("Numero de habitacion: " + numeroHabitacion + " \nPrecio por noche: $" + precioPorNoche + "\nDisponible: " + (disponible?"Sí":"No"));
     }
     
 }

@@ -51,34 +51,41 @@ public class Main {
                     String[] pRespuesta = respuesta.split(", "); //Está dividiendo la cadena usando ", " como delimitador
                     String nombre = pRespuesta[0];
                     int duracion = Integer.parseInt(pRespuesta[2]);
+                    pRespuesta[1] = pRespuesta[1].toLowerCase();
 
-                    if((pRespuesta[1].equals("Estandar") || pRespuesta[1].equals("Deluxe") || pRespuesta[1].equals("Suite")) && (duracion>0 && duracion<11)){
-                    String tipo = "Habitacion" + pRespuesta[1];
-                    
-                    System.out.println("Habitacion(es) " + pRespuesta[1] + " disponibles:");
+                    if ((pRespuesta[1].equals("estandar") || pRespuesta[1].equals("deluxe")
+                            || pRespuesta[1].equals("suite")) && (duracion > 0 && duracion < 11)) {
+                        String tipo = pRespuesta[1];
 
-                    ArrayList <Habitacion> escogerH = new ArrayList <>();
-                    for (Habitacion habitacion : habitaciones) {
-                       // System.out.println(habitacion.getClass().getSimpleName());
-                        if(tipo.equals(habitacion.getClass().getSimpleName()) && habitacion.getDisponible()){
-                            escogerH.add(habitacion);
-                            System.out.println(habitacion.getNumeroHabitacion() + "\t");
+                        System.out.println("Habitacion(es) " + pRespuesta[1] + " disponibles:");
+
+                        ArrayList<Habitacion> escogerH = new ArrayList<>();
+                        for (Habitacion habitacion : habitaciones) {
+                            if (tipo.equals(habitacion.getTipo().toLowerCase()) && habitacion.getDisponible()) {
+                                escogerH.add(habitacion);
+                                System.out.println(habitacion.getNumeroHabitacion() + "\t");
+                            }
                         }
-                    }
-                    System.out.println("Ingrese número de la habitación a reservar: ");
-                    int numReserva = sc.nextInt();
-                    for(Habitacion opciones : escogerH){
-                        if(numReserva==opciones.getNumeroHabitacion()){
-                            Reserva reserva = new Reserva(nombre, opciones, duracion);
-                            opciones.setDisponible(false);
-                            listaReservas.put(iReserva, reserva);
-                            System.out.println("La habitación N° " + opciones.getNumeroHabitacion() + " fue reservada exitosamente");
+                        System.out.println("Ingrese número de la habitación a reservar: ");
+                        int numReserva = sc.nextInt();
+                        for (Habitacion opciones : escogerH) {
+                            if (numReserva == opciones.getNumeroHabitacion() && opciones.getDisponible()) {
+                                Reserva reserva = new Reserva(nombre, opciones, duracion);
+                                opciones.setDisponible(false);
+                                listaReservas.put(iReserva, reserva);
+                                System.out.println("La habitacion N° " + opciones.getNumeroHabitacion()
+                                        + " fue reservada exitosamente");
+                                break;
+                            } else {
+                                System.out.println("Habitacion no existente o ocupada");
+                                break;
+                            }
                         }
-                    }
-                    iReserva++;
-                    System.out.print("Operacion Finalizada. Desea volver al menu principal? (Cualquier numero para continuar / 0 para salir): ");
-                    opcion = sc.nextInt();
-                    break;
+                        iReserva++;
+                        System.out.print(
+                                "Operacion Finalizada. Desea volver al menu principal? (Cualquier numero para continuar / 0 para salir): ");
+                        opcion = sc.nextInt();
+                        break;
                     } else {
                         System.out.println("Datos incorrectos ingresados. Intente de nuevo.");
                         break;
@@ -113,15 +120,15 @@ public class Main {
                                 System.out.println("Agregó TRANSPORTE +$100 \n");
                                 break;
                             default:
+                                System.out.println("Servicio no existente");
                                 break;
                         }
                     } else {
                         System.out.println("No se encontró ninguna reserva con el número especificado.");
                     }
-                    System.out.print("Operacion Finalizada. Desea volver al menu principal? (0 para salir): ");
+                    System.out.print("Operacion Finalizada. Desea volver al menu principal? (Cualquier numero para continuar / 0 para salir): ");
                     opcion = sc.nextInt();
                     break;
-
 
                     case 3: 
                     System.out.println("Listando todas las reservas: \n");
@@ -135,9 +142,12 @@ public class Main {
                     sc.nextLine();
                     System.out.println("");
                     Reserva reservaDetalle = listaReservas.get(num1);
+                    if (reservaDetalle != null) {
                     reservaDetalle.mostrarDetalles();
-
-                    System.out.print("Operacion Finalizada. Desea volver al menu principal? (0 para salir): ");
+                    } else {
+                        System.out.println("No se encontró ninguna reserva con el número especificado.");
+                    }
+                    System.out.print("Operacion Finalizada. Desea volver al menu principal? (Cualquier numero para continuar / 0 para salir): ");
                     opcion = sc.nextInt();
                     break;
                 case 0:

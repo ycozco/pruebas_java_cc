@@ -19,7 +19,7 @@ public class HabitacionSuite extends Habitacion {
     @Override
     public void obtenerInformacion() {
         super.obtenerInformacion();
-        System.out.println("Tipo: Suite");
+        System.out.println("Tipo: " + this.getTipo());
     }
 
 }
