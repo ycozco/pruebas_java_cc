@@ -109,7 +109,7 @@ public class Pruebas {
         return -1;
     }
 public static void main(String[] args) {
-        int tamaño = 10000;
+        int tamaño = 1000000;
         int[] arr = new int[tamaño];
         Random random = new Random();
 
@@ -121,17 +121,23 @@ public static void main(String[] args) {
         // Creando copias del arreglo para cada algoritmo
         int[] copiaParaMergesort = arr.clone();
         int[] copiaParaHeapsort = arr.clone();
+        int[] copiaBusquedaLineal = arr.clone();
 
         // Medir y comparar Mergesort
-        long inicio = System.nanoTime();
+        long inicio = System.currentTimeMillis();
         mergesort(copiaParaMergesort, 0, copiaParaMergesort.length - 1);
-        long fin = System.nanoTime();
+        long fin = System.currentTimeMillis();
         System.out.println("Mergesort: " + (fin - inicio) + " ns");
 
         // Medir y comparar Heapsort
-        inicio = System.nanoTime();
+        inicio = System.currentTimeMillis();
         heapsort(copiaParaHeapsort);
-        fin = System.nanoTime();
+        fin = System.currentTimeMillis();
         System.out.println("Heapsort: " + (fin - inicio) + " ns");
+
+        inicio = System.currentTimeMillis();
+        busquedaLineal(copiaBusquedaLineal, 45);
+        fin = System.currentTimeMillis();
+        System.out.println("Busqueda Lineal: " + (fin - inicio) + " ns");
     }
 }

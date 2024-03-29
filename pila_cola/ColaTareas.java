@@ -1,48 +1,48 @@
 public class ColaTareas {
-    private final int maxSize;
-    private Tarea[] queueArray;
-    private int front;
-    private int rear;
-    private int nItems;
+    private final int tamMax;
+    private Tarea[] arregloCola;
+    private int frente;
+    private int fin;
+    private int numElementos;
 
-    public ColaTareas(int size) {
-        this.maxSize = size;
-        this.queueArray = new Tarea[maxSize];
-        this.front = 0;
-        this.rear = -1;
-        this.nItems = 0;
+    public ColaTareas(int tam) {
+        this.tamMax = tam;
+        this.arregloCola = new Tarea[tamMax];
+        this.frente = 0;
+        this.fin = -1;
+        this.numElementos = 0;
     }
 
-    public void enqueue(Tarea tarea) {
-        if (!isFull()) {
-            if (rear == maxSize - 1) {
-                rear = -1;
+    public void encolar(Tarea tarea) {
+        if (!estaLlena()) {
+            if (fin == tamMax - 1) {
+                fin = -1;
             }
-            queueArray[++rear] = tarea;
-            nItems++;
+            arregloCola[++fin] = tarea;
+            numElementos++;
         } else {
             System.out.println("La cola está llena. No se puede agregar la tarea.");
         }
     }
 
-    public Tarea dequeue() {
-        if (!isEmpty()) {
-            Tarea temp = queueArray[front++];
-            if (front == maxSize) {
-                front = 0;
+    public Tarea desencolar() {
+        if (!estaVacia()) {
+            Tarea temp = arregloCola[frente++];
+            if (frente == tamMax) {
+                frente = 0;
             }
-            nItems--;
+            numElementos--;
             return temp;
         }
         System.out.println("La cola está vacía.");
         return null;
     }
 
-    public boolean isEmpty() {
-        return (nItems == 0);
+    public boolean estaVacia() {
+        return (numElementos == 0);
     }
 
-    public boolean isFull() {
-        return (nItems == maxSize);
+    public boolean estaLlena() {
+        return (numElementos == tamMax);
     }
 }
