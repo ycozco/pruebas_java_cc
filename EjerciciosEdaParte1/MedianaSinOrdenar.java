@@ -47,6 +47,7 @@ public class MedianaSinOrdenar {
 
     public static void main(String [] args) {
         int [] arreglo = {3,4,2,6,8,10,5,7,11,1};
+        // arreglo ordenado 1,2,3,4,5,6,7,8,10,11
         System.out.println("La mediana es: "+ encontrarMediana(arreglo) );
         
     }
