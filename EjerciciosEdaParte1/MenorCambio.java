@@ -20,12 +20,14 @@ public class MenorCambio {
             if(vuelto%monedas[i]>=0 ){
                 int division = vuelto / monedas[i];
                 memoria[i]=division;
-                
+                vuelto =- division*monedas[i];
             }
         }
+        for (int i : memoria) {
+            contadorMonedas=+i;
+        }
 
-
-        return 0;
+        return contadorMonedas;
     }
 
 
