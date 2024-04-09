@@ -35,9 +35,9 @@ public class MenorCambio {
 
     public static int  menorCambioRecursivo (int [] monedas, int vuelto, int posicion){
         if(vuelto==0) return 0;
-        if(vuelto<0) return Integer.MAX_VALUE;
+        if(vuelto<0 || posicion<0) return Integer.MAX_VALUE;
 
-        int monedaIncluida = menorCambioRecursivo(monedas, vuelto-monedas[posicion], posicion-1);
+        int monedaIncluida = menorCambioRecursivo(monedas, vuelto-monedas[posicion], posicion);
         if(monedaIncluida!=Integer.MAX_VALUE){
             monedaIncluida+=1;
         } 
@@ -46,5 +46,8 @@ public class MenorCambio {
         return Math.min(monedaIncluida, monedaExcluida);
         
     }
+
+    
+
 
 }
